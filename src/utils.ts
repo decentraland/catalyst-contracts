@@ -25,7 +25,7 @@ export const networks = {
   },
   mainnet: {
     wss: 'wss://mainnet.infura.io/ws/v3/65b4470058624aa493c1944328b19ec0',
-    http: 'https://mainnet.infura.io/v3/65b4470058624aa493c1944328b19ec0',
+    http: 'https://eth-mainnet.alchemyapi.io/v2/Iwb9vN0QkLDNOdnrnINYZRo3J_cbSzEp',
     contracts: {
       catalyst: {
         address: '0x4a2f10076101650f40342885b99b6b101d83c486',
