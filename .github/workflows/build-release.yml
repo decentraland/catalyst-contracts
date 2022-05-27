@@ -1,5 +1,7 @@
 on:
   push:
+    tags:
+      - '*'
     branches:
       - main
   release:
@@ -17,15 +19,15 @@ jobs:
         with:
           node-version: 14.x
       - name: install
-        run:  yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
       - name: build
-        run:  yarn build
+        run: yarn build
       - name: test
-        run:  yarn test
+        run: yarn test
       - name: Publish
         uses: menduz/oddish-action@master
         with:
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
           access: public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

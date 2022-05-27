@@ -6,8 +6,8 @@ import { List } from './List'
 
 export const networks = {
   ropsten: {
-    wss: 'wss://ropsten.infura.io/ws/v3/65b4470058624aa493c1944328b19ec0',
-    http: 'https://ropsten.infura.io/v3/65b4470058624aa493c1944328b19ec0',
+    wss: 'wss://rpc.decentraland.org/ropsten',
+    http: 'https://rpc.decentraland.org/ropsten',
     contracts: {
       catalyst: {
         address: '0xadd085f2318e9678bbb18b3e0711328f902b374b',
@@ -24,8 +24,8 @@ export const networks = {
     }
   },
   mainnet: {
-    wss: 'wss://mainnet.infura.io/ws/v3/65b4470058624aa493c1944328b19ec0',
-    http: 'https://mainnet.infura.io/v3/65b4470058624aa493c1944328b19ec0',
+    wss: 'wss://rpc.decentraland.org/mainnet',
+    http: 'https://rpc.decentraland.org/mainnet',
     contracts: {
       catalyst: {
         address: '0x4a2f10076101650f40342885b99b6b101d83c486',
