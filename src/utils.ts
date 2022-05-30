@@ -12,7 +12,7 @@ import {
 } from './ListAbi'
 
 // eslint-disable-next-line
-export async function nameDenylistForProvider(ethereumProvider: any): Promise<ListContract | undefined> {
+export async function nameDenylistForProvider(ethereumProvider: any): Promise<ListContract> {
   const rm = new RequestManager(ethereumProvider)
   const networkId = (await rm.net_version()).toString()
 
@@ -21,19 +21,15 @@ export async function nameDenylistForProvider(ethereumProvider: any): Promise<Li
       `There is no deployed NameDenylist contract for networkId=${networkId}`
     )
 
-  try {
-    const contractAddress = denylistNamesDeployments[networkId]
+  const contractAddress = denylistNamesDeployments[networkId]
 
-    return (await new ContractFactory(rm, listAbiItems).at(
-      contractAddress
-    )) as any as ListContract
-  } catch (error) {
-    return undefined
-  }
+  return (await new ContractFactory(rm, listAbiItems).at(
+    contractAddress
+  )) as any as ListContract
 }
 
 // eslint-disable-next-line
-export async function poiListForProvider(ethereumProvider: any): Promise<ListContract | undefined> {
+export async function poiListForProvider(ethereumProvider: any): Promise<ListContract> {
   const rm = new RequestManager(ethereumProvider)
   const networkId = (await rm.net_version()).toString()
 
@@ -42,19 +38,15 @@ export async function poiListForProvider(ethereumProvider: any): Promise<ListCon
       `There is no deployed PoiDenylist contract for networkId=${networkId}`
     )
 
-  try {
-    const contractAddress = poiDeployments[networkId]
+  const contractAddress = poiDeployments[networkId]
 
-    return (await new ContractFactory(rm, listAbiItems).at(
-      contractAddress
-    )) as any as ListContract
-  } catch (error) {
-    return undefined
-  }
+  return (await new ContractFactory(rm, listAbiItems).at(
+    contractAddress
+  )) as any as ListContract
 }
 
 // eslint-disable-next-line
-export async function catalystRegistryForProvider(ethereumProvider: any): Promise<CatalystContract | undefined> {
+export async function catalystRegistryForProvider(ethereumProvider: any): Promise<CatalystContract> {
   const rm = new RequestManager(ethereumProvider)
   const networkId = (await rm.net_version()).toString()
 
@@ -63,13 +55,9 @@ export async function catalystRegistryForProvider(ethereumProvider: any): Promis
       `There is no deployed CatalystProxy contract for networkId=${networkId}`
     )
 
-  try {
-    const contractAddress = catalystDeployments[networkId]
+  const contractAddress = catalystDeployments[networkId]
 
-    return (await new ContractFactory(rm, catalystAbiItems).at(
-      contractAddress
-    )) as any as CatalystContract
-  } catch (error) {
-    return undefined
-  }
+  return (await new ContractFactory(rm, catalystAbiItems).at(
+    contractAddress
+  )) as any as CatalystContract
 }

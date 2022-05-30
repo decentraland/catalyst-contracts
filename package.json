@@ -29,10 +29,10 @@
     "trailingComma": "none"
   },
   "dependencies": {
-    "@dcl/eslint-config": "^1.0.3",
     "eth-connect": "^6.0.2"
   },
   "devDependencies": {
+    "@dcl/eslint-config": "^1.0.3",
     "@types/jest": "^27.5.1",
     "@types/node": "16.7.10",
     "isomorphic-fetch": "^3.0.0",
