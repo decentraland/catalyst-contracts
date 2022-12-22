@@ -62,7 +62,3 @@ export const checkerAbi = [
     type: 'function'
   }
 ]
-
-export type Checker = {
-  checkLAND(sender: string, land: string, estate: string, x: number, y: number): Promise<boolean>
-}
