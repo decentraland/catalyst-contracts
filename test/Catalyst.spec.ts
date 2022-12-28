@@ -6,9 +6,13 @@ import { catalystRegistryForProvider, getAllCatalystFromProvider, nameDenylistFo
 describe('all tests', () => {
   const mainnetProvider = new WebSocketProvider('wss://rpc.decentraland.org/mainnet?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
   mainnetProvider.debug = true
+  const polygonProvider = new WebSocketProvider('wss://rpc.decentraland.org/polygon?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
+  polygonProvider.debug = true
 
   const goerliProvider = new WebSocketProvider('wss://rpc.decentraland.org/goerli?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
   goerliProvider.debug = true
+  const mumbaiProvider = new WebSocketProvider('wss://rpc.decentraland.org/mumbai?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
+  mumbaiProvider.debug = true
 
   afterAll(() => {
     mainnetProvider.dispose()
@@ -36,14 +40,14 @@ describe('all tests', () => {
   })
 
   describe('poi list', () => {
-    it('mainnet', async () => {
-      const contract = await poiListForProvider(mainnetProvider)
+    it('polygon', async () => {
+      const contract = await poiListForProvider(polygonProvider)
       const count = (await contract.size()).toNumber()
       expect(count).toBeGreaterThan(0)
     })
 
-    it('goerli', async () => {
-      const contract = await poiListForProvider(goerliProvider)
+    it('mumbai', async () => {
+      const contract = await poiListForProvider(mumbaiProvider)
       const count = (await contract.size()).toNumber()
       expect(count).toBeGreaterThan(0)
     })

@@ -1,8 +1,7 @@
 import { AbiItem, BigNumber } from 'eth-connect'
 
 export const poiDeployments = {
-  '5' /* goerli  */: '0xb8c7a7afd42675ab61f0a3732f8d0491825a933b',
-  '1' /* mainnet */: '0x0ef15a1c7a49429a36cb46d4da8c53119242b54e',
+  '80001' /* mumbai  */: '0x08E5a5288D6bBa9383724C57175C03A37fe83A2A',
   '137' /* polygon */: '0xFEC09d5C192aaf7Ec7E2C89Cc8D3224138391B2E'
 } as const
 
