@@ -19,8 +19,6 @@ export async function nameDenylistForProvider(ethereumProvider: any): Promise<Li
 export async function poiListForProvider(ethereumProvider: any): Promise<ListContract> {
   const rm = new RequestManager(ethereumProvider)
   const networkId = (await rm.net_version()).toString()
-  console.log(`network for ${ethereumProvider}`)
-  console.log(networkId)
 
   if (!(networkId in poiDeployments))
     throw new Error(`There is no deployed PoiDenylist contract for networkId=${networkId}`)
