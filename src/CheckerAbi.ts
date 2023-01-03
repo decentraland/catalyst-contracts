@@ -27,7 +27,7 @@ export const collectionFactoryContracts = {
   }
 }
 
-export const thirdParyContracts = {
+export const thirdPartyContracts = {
   mumbai: '0xEDf516F2D42A47F9cE0B145Fe0dbB76975379889',
   polygon: '0x1C436C1EFb4608dFfDC8bace99d2B03c314f3348'
 }
