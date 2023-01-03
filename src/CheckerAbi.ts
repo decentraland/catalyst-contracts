@@ -1,8 +1,8 @@
 export const checkerContracts = {
   goerli: '0xe69DD486AC000186Af573361Fb454Bbbb85AdD85',
   mainnet: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454',
-  mumbai: '0x98B6b187163657a4b19e40d7BB911584d9c96198',
-  polygon: '0x5699A7d45E59147D72Eb79B57df7343315b03dFD'
+  mumbai: '0x04149Af3ceDF7a84b37e246a116f0aE4eD429141',
+  polygon: '0xC2D0637FE019817b7B307b9B966E4400EB4aC165'
 }
 
 export const landContracts = {
@@ -25,6 +25,11 @@ export const collectionFactoryContracts = {
     v2: '0xB549B2442b2BD0a53795BC5cDcBFE0cAF7ACA9f8',
     v3: '0x3195e88aE10704b359764CB38e429D24f1c2f781'
   }
+}
+
+export const thirdParyContracts = {
+  mumbai: '0xEDf516F2D42A47F9cE0B145Fe0dbB76975379889',
+  polygon: '0x1C436C1EFb4608dFfDC8bace99d2B03c314f3348'
 }
 
 export const checkerAbi = [
