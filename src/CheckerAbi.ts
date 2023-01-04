@@ -16,6 +16,11 @@ export const landContracts = {
   }
 }
 
+export const registrarContracts = {
+  goerli: '0x6b8da2752827cf926215b43bb8E46Fd7b9dDac35',
+  mainnet: '0x2a187453064356c898cae034eaed119e1663acb8'
+}
+
 export const collectionFactoryContracts = {
   mumbai: {
     v2: '0x2A72Ec4241Ac4fBc915ae98aC5a5b01AdE721f4B',
