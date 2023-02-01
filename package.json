@@ -29,13 +29,13 @@
     "trailingComma": "none"
   },
   "dependencies": {
-    "@types/node-fetch": "2.x",
     "eth-connect": "^6.1.0"
   },
   "devDependencies": {
     "@dcl/eslint-config": "^1.0.4",
     "@types/jest": "^27.5.1",
     "@types/node": "16.7.10",
+    "@types/node-fetch": "2.x",
     "jest": "^28.1.0",
     "lint-staged": "12.1.4",
     "node-fetch": "2.x",
