@@ -1,23 +1,25 @@
-import { WebSocketProvider } from 'eth-connect'
-import { WebSocket } from 'ws'
-import { catalystRegistryForProvider, getAllCatalystFromProvider, nameDenylistForProvider, poiListForProvider } from '../src'
+import { HTTPProvider } from 'eth-connect'
+import {
+  catalystRegistryForProvider,
+  getAllCatalystFromProvider,
+  nameDenylistForProvider,
+  poiListForProvider
+} from '../src'
+import fetch from 'node-fetch'
 
+function createProvider(network: string) {
+  const provider = new HTTPProvider(`https://rpc.decentraland.org/${network}?project=catalyst-contracts-ci`, {
+    fetch: fetch
+  })
+  provider.debug = true
+  return provider
+}
 
 describe('all tests', () => {
-  const mainnetProvider = new WebSocketProvider('wss://rpc.decentraland.org/mainnet?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
-  mainnetProvider.debug = true
-  const polygonProvider = new WebSocketProvider('wss://rpc.decentraland.org/polygon?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
-  polygonProvider.debug = true
-
-  const goerliProvider = new WebSocketProvider('wss://rpc.decentraland.org/goerli?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
-  goerliProvider.debug = true
-  const mumbaiProvider = new WebSocketProvider('wss://rpc.decentraland.org/mumbai?project=catalyst-contracts-ci', { WebSocketConstructor: WebSocket })
-  mumbaiProvider.debug = true
-
-  afterAll(() => {
-    mainnetProvider.dispose()
-    goerliProvider.dispose()
-  })
+  const mainnetProvider = createProvider('mainnet')
+  const polygonProvider = createProvider('polygon')
+  const goerliProvider = createProvider('goerli')
+  const mumbaiProvider = createProvider('mumbai')
 
   describe('server list', () => {
     it('mainnet', async () => {
@@ -29,7 +31,10 @@ describe('all tests', () => {
       expect(id instanceof Uint8Array).toEqual(true)
 
       const data = await contract.catalystById(id)
-      expect(data).toMatchObject({ owner: "0x75e1d32289679dfcB2F01fBc0e043B3d7F9Cd443", domain: "interconnected.online" })
+      expect(data).toMatchObject({
+        owner: '0x75e1d32289679dfcB2F01fBc0e043B3d7F9Cd443',
+        domain: 'interconnected.online'
+      })
     })
 
     it('goerli', async () => {
@@ -69,7 +74,6 @@ describe('all tests', () => {
       expect(count).toBeGreaterThan(0)
     })
   })
-
 
   describe('Catalyst server list', () => {
     it('loads the catalysts from mainnet', async () => {
