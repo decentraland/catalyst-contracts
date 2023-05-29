@@ -1,78 +1,76 @@
-import RequestManager, { ContractFactory } from 'eth-connect'
-import { CatalystContract, catalystDeployments, catalystAbiItems, CatalystByIdResult } from './CatalystAbi'
-import { listAbiItems, denylistNamesDeployments, ListContract, poiDeployments } from './ListAbi'
-
-// eslint-disable-next-line
-export async function nameDenylistForProvider(ethereumProvider: any): Promise<ListContract> {
-  const rm = new RequestManager(ethereumProvider)
-  const networkId = (await rm.net_version()).toString()
-
-  if (!(networkId in denylistNamesDeployments))
-    throw new Error(`There is no deployed NameDenylist contract for networkId=${networkId}`)
-
-  const contractAddress = denylistNamesDeployments[networkId]
-
-  return (await new ContractFactory(rm, listAbiItems).at(contractAddress)) as any as ListContract
+export type CatalystByIdResult = {
+  id: string
+  owner: string
+  domain: string
 }
 
-// eslint-disable-next-line
-export async function poiListForProvider(ethereumProvider: any): Promise<ListContract> {
-  const rm = new RequestManager(ethereumProvider)
-  const networkId = (await rm.net_version()).toString()
-
-  if (!(networkId in poiDeployments))
-    throw new Error(`There is no deployed PoiDenylist contract for networkId=${networkId}`)
-
-  const contractAddress = poiDeployments[networkId]
-
-  return (await new ContractFactory(rm, listAbiItems).at(contractAddress)) as any as ListContract
+export type CatalystServerInfo = {
+  address: string
+  owner: string
+  id: string
 }
 
-// eslint-disable-next-line
-export async function catalystRegistryForProvider(ethereumProvider: any): Promise<CatalystContract> {
-  const rm = new RequestManager(ethereumProvider)
-  const networkId = (await rm.net_version()).toString()
-
-  if (!(networkId in catalystDeployments))
-    throw new Error(`There is no deployed CatalystProxy contract for networkId=${networkId}`)
-
-  const contractAddress = catalystDeployments[networkId]
-
-  return (await new ContractFactory(rm, catalystAbiItems).at(contractAddress)) as any as CatalystContract
+export type CatalystContract = {
+  catalystCount(): Promise<number>
+  catalystIds(i: number): Promise<string>
+  catalystById(id: string): Promise<CatalystByIdResult>
 }
 
-/** Returns the catalyst list for a specified Ethereum Provider. */
-export async function getAllCatalystFromProvider(
-  // eslint-disable-next-line
-  etherumProvider: any
-): Promise<CatalystByIdResult[]> {
-  const contract = await catalystRegistryForProvider(etherumProvider)
+type ListContract = {
+  size(): Promise<number>
+  get(i: number): Promise<string>
+}
 
-  const count = (await contract.catalystCount()).toNumber()
+export type PoiContract = ListContract
+export type NameDenylistContract = ListContract
 
-  const nodes: CatalystByIdResult[] = []
-  // Create an array with values from 0 to count - 1
-  const indices = new Array(count).fill(0).map((_, i) => i)
-
-  const dataPromises = indices.map((index) => contract.catalystIds(index).then((id) => contract.catalystById(id)))
-
-  const data = await Promise.all(dataPromises)
-
-  for (const node of data) {
-    if (node.domain.startsWith('http://')) {
-      console.warn(`Catalyst node domain using http protocol, skipping ${JSON.stringify(node)}`)
+export async function getCatalystServersFromDAO(contract: CatalystContract): Promise<CatalystServerInfo[]> {
+  const nodes: CatalystServerInfo[] = []
+  for (let i = 0; i < (await contract.catalystCount()); i++) {
+    const record = await contract.catalystById(await contract.catalystIds(i))
+    const { id, owner, domain } = record
+    if (domain.startsWith('http://')) {
+      console.warn('Catalyst node address using http protocol, skipping')
       continue
     }
 
-    if (!node.domain.startsWith('https://')) {
-      node.domain = 'https://' + node.domain
+    let address = domain
+
+    if (!address.startsWith('https://')) {
+      address = 'https://' + address
     }
 
     // trim url in case it starts/ends with a blank
-    node.domain = node.domain.trim()
+    address = address.trim()
 
-    nodes.push(node)
+    nodes.push({
+      address,
+      owner,
+      id
+    })
   }
 
   return nodes
+}
+
+export async function getPoiFromContract(contract: PoiContract): Promise<string[]> {
+  const count = await contract.size()
+
+  const pois: Promise<string>[] = []
+  for (let i = 0; i < count; i++) {
+    pois.push(contract.get(i))
+  }
+
+  return Promise.all(pois)
+}
+
+export async function getNameDenylistFromContract(contract: NameDenylistContract): Promise<string[]> {
+  const count = await contract.size()
+
+  const denylist: Promise<string>[] = []
+  for (let i = 0; i < count; i++) {
+    denylist.push(contract.get(i))
+  }
+
+  return Promise.all(denylist)
 }
