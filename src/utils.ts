@@ -64,7 +64,7 @@ async function getValuesFromListContract(contract: PoiContract): Promise<string[
   return Promise.all(values)
 }
 
-export function getPoiFromContract(contract: PoiContract): Promise<string[]> {
+export function getPoisFromContract(contract: PoiContract): Promise<string[]> {
   return getValuesFromListContract(contract)
 }
 

@@ -7,7 +7,6 @@ export const l1Contracts = {
     registrar: '0x6b8da2752827cf926215b43bb8E46Fd7b9dDac35',
     landContract: '0x25b6B4bac4aDB582a0ABd475439dA6730777Fbf7',
     stateContract: '0xC9A46712E6913c24d15b46fF12221a79c4e251DC',
-    nameDenylist: '0x71c84760df0537f7db286274817462dc2e6c1366',
     catalysts: '0x380e46851c47b73b6aa9bea50cf3b50e2cf637cf'
   },
   mainnet: {
