@@ -53,24 +53,21 @@ export async function getCatalystServersFromDAO(contract: CatalystContract): Pro
   return nodes
 }
 
-export async function getPoiFromContract(contract: PoiContract): Promise<string[]> {
+async function getValuesFromListContract(contract: PoiContract): Promise<string[]> {
   const count = await contract.size()
 
-  const pois: Promise<string>[] = []
+  const values: Promise<string>[] = []
   for (let i = 0; i < count; i++) {
-    pois.push(contract.get(i))
+    values.push(contract.get(i))
   }
 
-  return Promise.all(pois)
+  return Promise.all(values)
 }
 
-export async function getNameDenylistFromContract(contract: NameDenylistContract): Promise<string[]> {
-  const count = await contract.size()
+export function getPoiFromContract(contract: PoiContract): Promise<string[]> {
+  return getValuesFromListContract(contract)
+}
 
-  const denylist: Promise<string>[] = []
-  for (let i = 0; i < count; i++) {
-    denylist.push(contract.get(i))
-  }
-
-  return Promise.all(denylist)
+export function getNameDenylistFromContract(contract: NameDenylistContract): Promise<string[]> {
+  return getValuesFromListContract(contract)
 }

@@ -9,7 +9,7 @@
   "scripts": {
     "cleanup": "shx rm -rf dist node_modules",
     "build": "tsc -b",
-    "test": "jest --forceExit --detectOpenHandles --coverage --verbose || true",
+    "test": "jest --forceExit --detectOpenHandles --coverage --verbose",
     "lint:fix": "eslint '**/*.ts' --fix",
     "lint:check": "eslint '**/*.ts'"
   },
@@ -33,6 +33,7 @@
     "@dcl/eslint-config": "^1.0.4",
     "@types/jest": "^27.5.1",
     "@types/node": "16.7.10",
+    "ethers": "^6.4.0",
     "jest": "^28.1.0",
     "ts-jest": "^28.0.3",
     "ts-node": "10.2.1",
