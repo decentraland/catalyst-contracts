@@ -1,5 +1,4 @@
-import * as ethers from 'ethers'
-import { JsonRpcProvider, Provider } from 'ethers'
+import { JsonRpcProvider, Provider, Contract } from 'ethers'
 import {
   catalystAbi,
   listAbi,
@@ -21,7 +20,7 @@ const mumbai = new JsonRpcProvider('https://rpc.decentraland.org/mumbai?project=
 describe('all tests', () => {
   describe('server list', () => {
     function createContract(address: string, provider: Provider): CatalystContract {
-      const contract = new ethers.Contract(address, catalystAbi, provider)
+      const contract = new Contract(address, catalystAbi, provider)
       return {
         async catalystCount(): Promise<number> {
           return contract.catalystCount()
@@ -67,7 +66,7 @@ describe('all tests', () => {
     it(
       'polygon',
       async () => {
-        const contract = new ethers.Contract(l2Contracts['polygon'].poi, listAbi, polygon)
+        const contract = new Contract(l2Contracts['polygon'].poi, listAbi, polygon)
         const pois = await getPoiFromContract(contract as any)
         expect(pois.length).toBeGreaterThan(1)
       },
@@ -77,7 +76,7 @@ describe('all tests', () => {
     it(
       'mumbai',
       async () => {
-        const contract = new ethers.Contract(l2Contracts['mumbai'].poi, listAbi, mumbai)
+        const contract = new Contract(l2Contracts['mumbai'].poi, listAbi, mumbai)
         const pois = await getPoiFromContract(contract as any)
         expect(pois.length).toBeGreaterThan(1)
       },
@@ -89,7 +88,7 @@ describe('all tests', () => {
     it(
       'mainnet',
       async () => {
-        const contract = new ethers.Contract(l1Contracts['mainnet'].nameDenylist, listAbi, mainnet)
+        const contract = new Contract(l1Contracts['mainnet'].nameDenylist, listAbi, mainnet)
         const denylist = await getPoiFromContract(contract as any)
         expect(denylist.length).toBeGreaterThan(1)
       },
@@ -99,7 +98,7 @@ describe('all tests', () => {
     it(
       'goerli',
       async () => {
-        const contract = new ethers.Contract(l1Contracts['goerli'].nameDenylist, listAbi, goerli)
+        const contract = new Contract(l1Contracts['goerli'].nameDenylist, listAbi, goerli)
         const denylist = await getPoiFromContract(contract as any)
         expect(denylist.length).toBeGreaterThan(1)
       },
