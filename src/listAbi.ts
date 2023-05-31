@@ -1,36 +1,26 @@
-import { AbiItem, BigNumber } from 'eth-connect'
-
-export const catalystDeployments = {
-  '5' /* goerli  */: '0x380e46851c47b73b6aa9bea50cf3b50e2cf637cf',
-  '1' /* mainnet */: '0x4a2f10076101650f40342885b99b6b101d83c486'
-} as const
-
-export type CatalystByIdResult = {
-  id: Uint8Array
-  owner: string
-  domain: string
-}
-
-export type CatalystContract = {
-  catalystCount(): Promise<BigNumber>
-  catalystIds(input: BigNumber | string | number): Promise<Uint8Array>
-  catalystById(id: Uint8Array): Promise<CatalystByIdResult>
-}
-
-export const catalystAbiItems: AbiItem[] = [
+export const listAbi = [
   {
     constant: true,
-    inputs: [
-      {
-        name: '',
-        type: 'address'
-      }
-    ],
-    name: 'owners',
+    inputs: [],
+    name: 'ADD_ROLE',
     outputs: [
       {
         name: '',
-        type: 'bool'
+        type: 'bytes32'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
       }
     ],
     payable: false,
@@ -45,20 +35,6 @@ export const catalystAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'bool'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'catalystCount',
-    outputs: [
-      {
-        name: '',
-        type: 'uint256'
       }
     ],
     payable: false,
@@ -100,74 +76,31 @@ export const catalystAbiItems: AbiItem[] = [
   },
   {
     constant: true,
-    inputs: [
+    inputs: [],
+    name: 'REMOVE_ROLE',
+    outputs: [
       {
         name: '',
         type: 'bytes32'
       }
     ],
-    name: 'catalystIndexById',
-    outputs: [
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
       {
         name: '',
         type: 'uint256'
       }
     ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_id',
-        type: 'bytes32'
-      }
-    ],
-    name: 'catalystOwner',
-    outputs: [
-      {
-        name: '',
-        type: 'address'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_id',
-        type: 'bytes32'
-      }
-    ],
-    name: 'catalystDomain',
+    name: 'values',
     outputs: [
       {
         name: '',
         type: 'string'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '',
-        type: 'uint256'
-      }
-    ],
-    name: 'catalystIds',
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32'
       }
     ],
     payable: false,
@@ -194,6 +127,20 @@ export const catalystAbiItems: AbiItem[] = [
     type: 'function'
   },
   {
+    constant: false,
+    inputs: [
+      {
+        name: '_value',
+        type: 'string'
+      }
+    ],
+    name: 'remove',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
     constant: true,
     inputs: [],
     name: 'appId',
@@ -208,15 +155,6 @@ export const catalystAbiItems: AbiItem[] = [
     type: 'function'
   },
   {
-    constant: false,
-    inputs: [],
-    name: 'initialize',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
     constant: true,
     inputs: [],
     name: 'getInitializationBlock',
@@ -224,6 +162,81 @@ export const catalystAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'uint256'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'getTypeHash',
+    outputs: [
+      {
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'listType',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'size',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_index',
+        type: 'uint256'
+      }
+    ],
+    name: 'get',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
       }
     ],
     payable: false,
@@ -289,83 +302,33 @@ export const catalystAbiItems: AbiItem[] = [
     constant: false,
     inputs: [
       {
-        name: '_id',
-        type: 'bytes32'
+        name: '_name',
+        type: 'string'
+      },
+      {
+        name: '_symbol',
+        type: 'string'
+      },
+      {
+        name: '_type',
+        type: 'string'
       }
     ],
-    name: 'removeCatalyst',
+    name: 'initialize',
     outputs: [],
     payable: false,
     stateMutability: 'nonpayable',
     type: 'function'
   },
   {
-    constant: true,
-    inputs: [
-      {
-        name: '',
-        type: 'bytes32'
-      }
-    ],
-    name: 'domains',
-    outputs: [
-      {
-        name: '',
-        type: 'bool'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '',
-        type: 'bytes32'
-      }
-    ],
-    name: 'catalystById',
-    outputs: [
-      {
-        name: 'id',
-        type: 'bytes32'
-      },
-      {
-        name: 'owner',
-        type: 'address'
-      },
-      {
-        name: 'domain',
-        type: 'string'
-      },
-      {
-        name: 'startTime',
-        type: 'uint256'
-      },
-      {
-        name: 'endTime',
-        type: 'uint256'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
     constant: false,
     inputs: [
       {
-        name: '_owner',
-        type: 'address'
-      },
-      {
-        name: '_domain',
+        name: '_value',
         type: 'string'
       }
     ],
-    name: 'addCatalyst',
+    name: 'add',
     outputs: [],
     payable: false,
     stateMutability: 'nonpayable',
@@ -379,20 +342,6 @@ export const catalystAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'address'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'MODIFY_ROLE',
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32'
       }
     ],
     payable: false,
@@ -418,21 +367,16 @@ export const catalystAbiItems: AbiItem[] = [
     inputs: [
       {
         indexed: true,
-        name: '_id',
-        type: 'bytes32'
-      },
-      {
-        indexed: true,
-        name: '_owner',
+        name: '_caller',
         type: 'address'
       },
       {
         indexed: false,
-        name: '_domain',
+        name: '_value',
         type: 'string'
       }
     ],
-    name: 'AddCatalyst',
+    name: 'Add',
     type: 'event'
   },
   {
@@ -440,21 +384,16 @@ export const catalystAbiItems: AbiItem[] = [
     inputs: [
       {
         indexed: true,
-        name: '_id',
-        type: 'bytes32'
-      },
-      {
-        indexed: true,
-        name: '_owner',
+        name: '_caller',
         type: 'address'
       },
       {
         indexed: false,
-        name: '_domain',
+        name: '_value',
         type: 'string'
       }
     ],
-    name: 'RemoveCatalyst',
+    name: 'Remove',
     type: 'event'
   },
   {

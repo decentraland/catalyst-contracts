@@ -1,43 +1,17 @@
-import { AbiItem, BigNumber } from 'eth-connect'
-
-export const poiDeployments = {
-  '80001' /* mumbai  */: '0x08E5a5288D6bBa9383724C57175C03A37fe83A2A',
-  '137' /* polygon */: '0xFEC09d5C192aaf7Ec7E2C89Cc8D3224138391B2E'
-} as const
-
-export const denylistNamesDeployments = {
-  '5' /* goerli  */: '0x71c84760df0537f7db286274817462dc2e6c1366',
-  '1' /* mainnet */: '0x0c4c90a4f29872a2e9ef4c4be3d419792bca9a36'
-} as const
-
-export type ListContract = {
-  size(): Promise<BigNumber>
-  get(input: BigNumber | number | string): Promise<string>
-}
-
-export const listAbiItems: AbiItem[] = [
+export const catalystAbi = [
   {
     constant: true,
-    inputs: [],
-    name: 'ADD_ROLE',
-    outputs: [
+    inputs: [
       {
         name: '',
-        type: 'bytes32'
+        type: 'address'
       }
     ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'name',
+    name: 'owners',
     outputs: [
       {
         name: '',
-        type: 'string'
+        type: 'bool'
       }
     ],
     payable: false,
@@ -52,6 +26,20 @@ export const listAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'bool'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'catalystCount',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256'
       }
     ],
     payable: false,
@@ -93,12 +81,55 @@ export const listAbiItems: AbiItem[] = [
   },
   {
     constant: true,
-    inputs: [],
-    name: 'REMOVE_ROLE',
-    outputs: [
+    inputs: [
       {
         name: '',
         type: 'bytes32'
+      }
+    ],
+    name: 'catalystIndexById',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_id',
+        type: 'bytes32'
+      }
+    ],
+    name: 'catalystOwner',
+    outputs: [
+      {
+        name: '',
+        type: 'address'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_id',
+        type: 'bytes32'
+      }
+    ],
+    name: 'catalystAddress',
+    outputs: [
+      {
+        name: '',
+        type: 'string'
       }
     ],
     payable: false,
@@ -113,11 +144,11 @@ export const listAbiItems: AbiItem[] = [
         type: 'uint256'
       }
     ],
-    name: 'values',
+    name: 'catalystIds',
     outputs: [
       {
         name: '',
-        type: 'string'
+        type: 'bytes32'
       }
     ],
     payable: false,
@@ -144,20 +175,6 @@ export const listAbiItems: AbiItem[] = [
     type: 'function'
   },
   {
-    constant: false,
-    inputs: [
-      {
-        name: '_value',
-        type: 'string'
-      }
-    ],
-    name: 'remove',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
     constant: true,
     inputs: [],
     name: 'appId',
@@ -172,6 +189,15 @@ export const listAbiItems: AbiItem[] = [
     type: 'function'
   },
   {
+    constant: false,
+    inputs: [],
+    name: 'initialize',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
     constant: true,
     inputs: [],
     name: 'getInitializationBlock',
@@ -179,81 +205,6 @@ export const listAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'uint256'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'getTypeHash',
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'listType',
-    outputs: [
-      {
-        name: '',
-        type: 'string'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'size',
-    outputs: [
-      {
-        name: '',
-        type: 'uint256'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_index',
-        type: 'uint256'
-      }
-    ],
-    name: 'get',
-    outputs: [
-      {
-        name: '',
-        type: 'string'
-      }
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'symbol',
-    outputs: [
-      {
-        name: '',
-        type: 'string'
       }
     ],
     payable: false,
@@ -319,33 +270,83 @@ export const listAbiItems: AbiItem[] = [
     constant: false,
     inputs: [
       {
-        name: '_name',
-        type: 'string'
-      },
-      {
-        name: '_symbol',
-        type: 'string'
-      },
-      {
-        name: '_type',
-        type: 'string'
+        name: '_id',
+        type: 'bytes32'
       }
     ],
-    name: 'initialize',
+    name: 'removeCatalyst',
     outputs: [],
     payable: false,
     stateMutability: 'nonpayable',
     type: 'function'
   },
   {
+    constant: true,
+    inputs: [
+      {
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    name: 'addresss',
+    outputs: [
+      {
+        name: '',
+        type: 'bool'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    name: 'catalystById',
+    outputs: [
+      {
+        name: 'id',
+        type: 'bytes32'
+      },
+      {
+        name: 'owner',
+        type: 'address'
+      },
+      {
+        name: 'address',
+        type: 'string'
+      },
+      {
+        name: 'startTime',
+        type: 'uint256'
+      },
+      {
+        name: 'endTime',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
     constant: false,
     inputs: [
       {
-        name: '_value',
+        name: '_owner',
+        type: 'address'
+      },
+      {
+        name: '_address',
         type: 'string'
       }
     ],
-    name: 'add',
+    name: 'addCatalyst',
     outputs: [],
     payable: false,
     stateMutability: 'nonpayable',
@@ -359,6 +360,20 @@ export const listAbiItems: AbiItem[] = [
       {
         name: '',
         type: 'address'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'MODIFY_ROLE',
+    outputs: [
+      {
+        name: '',
+        type: 'bytes32'
       }
     ],
     payable: false,
@@ -384,16 +399,21 @@ export const listAbiItems: AbiItem[] = [
     inputs: [
       {
         indexed: true,
-        name: '_caller',
+        name: '_id',
+        type: 'bytes32'
+      },
+      {
+        indexed: true,
+        name: '_owner',
         type: 'address'
       },
       {
         indexed: false,
-        name: '_value',
+        name: '_address',
         type: 'string'
       }
     ],
-    name: 'Add',
+    name: 'AddCatalyst',
     type: 'event'
   },
   {
@@ -401,16 +421,21 @@ export const listAbiItems: AbiItem[] = [
     inputs: [
       {
         indexed: true,
-        name: '_caller',
+        name: '_id',
+        type: 'bytes32'
+      },
+      {
+        indexed: true,
+        name: '_owner',
         type: 'address'
       },
       {
         indexed: false,
-        name: '_value',
+        name: '_address',
         type: 'string'
       }
     ],
-    name: 'Remove',
+    name: 'RemoveCatalyst',
     type: 'event'
   },
   {
