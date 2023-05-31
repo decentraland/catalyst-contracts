@@ -1,5 +1,6 @@
 export * from './catalystAbi'
 export * from './listAbi'
+export * from './checkerAbi'
 export * from './utils'
 
 export const l1Contracts = {
