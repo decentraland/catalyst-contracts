@@ -1,4 +1,5 @@
 export * from './abis'
+export * from './utils'
 
 export type L1Network = 'goerli' | 'mainnet'
 export type L2Network = 'mumbai' | 'polygon'
