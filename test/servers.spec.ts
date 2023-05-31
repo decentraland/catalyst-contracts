@@ -26,7 +26,7 @@ describe('server list', () => {
   it(
     'mainnet',
     async () => {
-      const contract = createContract(l1Contracts['mainnet'].catalysts, mainnet)
+      const contract = createContract(l1Contracts.mainnet.catalyst, mainnet)
       const servers = await getCatalystServersFromDAO(contract)
       expect(servers).toHaveLength(11)
       const addresses = new Set(servers.map((s) => s.address))
@@ -39,7 +39,7 @@ describe('server list', () => {
   it(
     'goerli',
     async () => {
-      const contract = createContract(l1Contracts['goerli'].catalysts, goerli)
+      const contract = createContract(l1Contracts.goerli.catalyst, goerli)
       const servers = await getCatalystServersFromDAO(contract)
       expect(servers).toHaveLength(3)
       const addresses = new Set(servers.map((s) => s.address))

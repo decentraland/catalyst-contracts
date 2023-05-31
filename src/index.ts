@@ -5,21 +5,24 @@ export * from './utils'
 export const l1Contracts = {
   goerli: {
     registrar: '0x6b8da2752827cf926215b43bb8E46Fd7b9dDac35',
-    landContract: '0x25b6B4bac4aDB582a0ABd475439dA6730777Fbf7',
-    stateContract: '0xC9A46712E6913c24d15b46fF12221a79c4e251DC',
-    catalysts: '0x380e46851c47b73b6aa9bea50cf3b50e2cf637cf'
+    land: '0x25b6B4bac4aDB582a0ABd475439dA6730777Fbf7',
+    state: '0xC9A46712E6913c24d15b46fF12221a79c4e251DC',
+    catalyst: '0x380e46851c47b73b6aa9bea50cf3b50e2cf637cf',
+    checker: '0xe69DD486AC000186Af573361Fb454Bbbb85AdD85'
   },
   mainnet: {
     registrar: '0x2a187453064356c898cae034eaed119e1663acb8',
-    landContract: '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d',
-    stateContract: '0x959e104e1a4db6317fa58f8295f586e1a978c297',
+    land: '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d',
+    state: '0x959e104e1a4db6317fa58f8295f586e1a978c297',
     nameDenylist: '0x0c4c90a4f29872a2e9ef4c4be3d419792bca9a36',
-    catalysts: '0x4a2f10076101650f40342885b99b6b101d83c486'
+    catalyst: '0x4a2f10076101650f40342885b99b6b101d83c486',
+    checker: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454'
   }
 }
 
 export const l2Contracts = {
   mumbai: {
+    checker: '0x04149Af3ceDF7a84b37e246a116f0aE4eD429141',
     thirdParty: '0xEDf516F2D42A47F9cE0B145Fe0dbB76975379889',
     factories: [
       { address: '0x2A72Ec4241Ac4fBc915ae98aC5a5b01AdE721f4B', sinceBlock: 14517381 },
@@ -32,6 +35,7 @@ export const l2Contracts = {
     poi: '0x08E5a5288D6bBa9383724C57175C03A37fe83A2A'
   },
   polygon: {
+    checker: '0xC2D0637FE019817b7B307b9B966E4400EB4aC165',
     thirdParty: '0x1C436C1EFb4608dFfDC8bace99d2B03c314f3348',
     factories: [
       {
