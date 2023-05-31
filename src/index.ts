@@ -1,6 +1,4 @@
-export * from './catalystAbi'
-export * from './listAbi'
-export * from './checkerAbi'
+export * from './abis'
 export * from './utils'
 
 export type L1Network = 'goerli' | 'mainnet'
