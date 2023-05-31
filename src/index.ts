@@ -3,6 +3,9 @@ export * from './listAbi'
 export * from './checkerAbi'
 export * from './utils'
 
+export type L1Network = 'goerli' | 'mainnet'
+export type L2Network = 'mumbai' | 'polygon'
+
 export const l1Contracts = {
   goerli: {
     registrar: '0x6b8da2752827cf926215b43bb8E46Fd7b9dDac35',
