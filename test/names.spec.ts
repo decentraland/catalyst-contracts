@@ -15,4 +15,14 @@ describe('names denylist', () => {
     },
     timeout
   )
+
+  it(
+    'goerli',
+    async () => {
+      const contract = new Contract(l1Contracts.goerli.nameDenylist, listAbi, mainnet)
+      const denylist = await getPoisFromContract(contract as any)
+      expect(denylist.length).toHaveLength(0)
+    },
+    timeout
+  )
 })
