@@ -1076,10 +1076,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.10.tgz#7aa732cc47341c12a16b7d562f519c2383b6d4fc"
   integrity sha512-S63Dlv4zIPb8x6MMTgDq5WWRJQe56iBEY0O3SOFA9JrRienkOVDXSXBjjJw6HTNQYSE2JI6GMCR6LVbIMHJVvA==
 
-"@types/node@^16.11.19":
-  version "16.18.34"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.34.tgz#62d2099b30339dec4b1b04a14c96266459d7c8b2"
-  integrity sha512-VmVm7gXwhkUimRfBwVI1CHhwp86jDWR04B5FGebMMyxV90SlCmFujwUHrxTD4oO+SOYU86SoxvhgeRQJY7iXFg==
+"@types/node@^20.3.1":
+  version "20.3.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.3.3.tgz#329842940042d2b280897150e023e604d11657d6"
+  integrity sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==
 
 "@types/prettier@^2.1.5":
   version "2.7.2"
@@ -1213,11 +1213,11 @@
     cross-fetch "^3.1.5"
 
 "@well-known-components/interfaces@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@well-known-components/interfaces/-/interfaces-1.4.1.tgz#310119cd5d9f7f67c7914c49b4d43a105acacec5"
-  integrity sha512-eu4ndE32jF+qKAX/rQ8SFBWh7PCXsOPdArgPweOjK4pdLOyzJaAJaY67/LEerrIp/LNgKDGy0fYbbdZ76BQt1A==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@well-known-components/interfaces/-/interfaces-1.4.2.tgz#e37eb296280abfcab14f0608b3bdfc84d5a21929"
+  integrity sha512-1tkr/OhZ4UmnQiST2svKznEiJ86crV2S+AIhokhowR4MexAKWgYlmZpoP6VIcgDVPf7nu8hOtIPMQaCZ+COC0A==
   dependencies:
-    "@types/node" "^16.11.19"
+    "@types/node" "^20.3.1"
     "@types/node-fetch" "^2.5.12"
     typed-url-params "^1.0.1"
 
