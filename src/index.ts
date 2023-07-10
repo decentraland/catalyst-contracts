@@ -1,7 +1,7 @@
 export * from './abis'
 export * from './utils'
 
-export type L1Network = 'goerli' | 'mainnet'
+export type L1Network = 'goerli' | 'mainnet' | 'sepolia'
 export type L2Network = 'mumbai' | 'polygon'
 
 export const l1Contracts = {
@@ -19,6 +19,14 @@ export const l1Contracts = {
     state: '0x959e104e1a4db6317fa58f8295f586e1a978c297',
     nameDenylist: '0x0c4c90a4f29872a2e9ef4c4be3d419792bca9a36',
     catalyst: '0x4a2f10076101650f40342885b99b6b101d83c486',
+    checker: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454'
+  },
+  sepolia: {
+    registrar: '0x7518456ae93eb98f3e64571b689c626616bb7f30',
+    land: '0x42f4ba48791e2de32f5fbf553441c2672864bb33',
+    state: '0x369a7fbe718c870c79f99fb423882e8dd8b20486',
+    nameDenylist: '0x215b0d1d2c870719aeb8a2cce24d06ce16d741ec',
+    catalyst: '0x32b3bfddab3ffb719cb8316b65ab92786d06d6e7',
     checker: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454'
   }
 }
