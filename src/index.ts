@@ -6,6 +6,7 @@ export type L2Network = 'mumbai' | 'polygon'
 
 export const l1Contracts = {
   goerli: {
+    chainId: 5,
     registrar: '0x6b8da2752827cf926215b43bb8E46Fd7b9dDac35',
     land: '0x25b6B4bac4aDB582a0ABd475439dA6730777Fbf7',
     state: '0xC9A46712E6913c24d15b46fF12221a79c4e251DC',
@@ -14,6 +15,7 @@ export const l1Contracts = {
     checker: '0xe69DD486AC000186Af573361Fb454Bbbb85AdD85'
   },
   mainnet: {
+    chainId: 1,
     registrar: '0x2a187453064356c898cae034eaed119e1663acb8',
     land: '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d',
     state: '0x959e104e1a4db6317fa58f8295f586e1a978c297',
@@ -22,6 +24,7 @@ export const l1Contracts = {
     checker: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454'
   },
   sepolia: {
+    chainId: 11155111,
     registrar: '0x7518456ae93eb98f3e64571b689c626616bb7f30',
     land: '0x42f4ba48791e2de32f5fbf553441c2672864bb33',
     state: '0x369a7fbe718c870c79f99fb423882e8dd8b20486',
