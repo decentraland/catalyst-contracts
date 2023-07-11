@@ -28,8 +28,8 @@ export const l1Contracts = {
     registrar: '0x7518456ae93eb98f3e64571b689c626616bb7f30',
     land: '0x42f4ba48791e2de32f5fbf553441c2672864bb33',
     state: '0x369a7fbe718c870c79f99fb423882e8dd8b20486',
-    nameDenylist: '0x215b0d1d2c870719aeb8a2cce24d06ce16d741ec',
-    catalyst: '0x32b3bfddab3ffb719cb8316b65ab92786d06d6e7',
+    nameDenylist: '0x6082b0b10b0fe9040652e35acbf3a22fe6764f27',
+    catalyst: '0x9b5091588a4bae0a5ea54a35af3c31f57a68ed37',
     checker: '0x49fd6E40548A67a3FB9cA4fE22ab87885ba10454'
   }
 }
