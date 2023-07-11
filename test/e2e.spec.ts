@@ -123,7 +123,7 @@ describe('e2e', () => {
       async () => {
         const contract = await createContract(l1Contracts.goerli.catalyst, goerli)
         const servers = await getCatalystServersFromDAO(contract)
-        expect(servers).toHaveLength(3)
+        expect(servers).toHaveLength(2)
         const addresses = new Set(servers.map((s) => s.address))
         expect(addresses).toContain('https://peer-ap1.decentraland.zone')
         expect(addresses).toContain('https://peer.decentraland.zone')
