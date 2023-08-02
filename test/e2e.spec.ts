@@ -18,6 +18,7 @@ const timeout = 100000
 describe('e2e', () => {
   let mainnet: HTTPProvider
   let goerli: HTTPProvider
+  let sepolia: HTTPProvider
   let polygon: HTTPProvider
   let mumbai: HTTPProvider
 
@@ -26,6 +27,7 @@ describe('e2e', () => {
     const opts = { fetch: fetch.fetch }
     mainnet = new HTTPProvider('https://rpc.decentraland.org/mainnet?project=catalyst-contracts-ci', opts)
     goerli = new HTTPProvider('https://rpc.decentraland.org/goerli?project=catalyst-contracts-ci', opts)
+    sepolia = new HTTPProvider('https://rpc.decentraland.org/sepolia?project=catalyst-contracts-ci', opts)
     polygon = new HTTPProvider('https://rpc.decentraland.org/polygon?project=catalyst-contracts-ci', opts)
     mumbai = new HTTPProvider('https://rpc.decentraland.org/mumbai?project=catalyst-contracts-ci', opts)
   })
@@ -51,6 +53,16 @@ describe('e2e', () => {
       'goerli',
       async () => {
         const contract = await createContract(l1Contracts.goerli.nameDenylist, goerli)
+        const denylist = await getPoisFromContract(contract)
+        expect(denylist).toHaveLength(0)
+      },
+      timeout
+    )
+
+    it(
+      'sepolia',
+      async () => {
+        const contract = await createContract(l1Contracts.sepolia.nameDenylist, sepolia)
         const denylist = await getPoisFromContract(contract)
         expect(denylist).toHaveLength(0)
       },
@@ -123,7 +135,17 @@ describe('e2e', () => {
       async () => {
         const contract = await createContract(l1Contracts.goerli.catalyst, goerli)
         const servers = await getCatalystServersFromDAO(contract)
-        expect(servers).toHaveLength(2)
+        expect(servers).toHaveLength(0)
+      },
+      timeout
+    )
+
+    it(
+      'sepolia',
+      async () => {
+        const contract = await createContract(l1Contracts.sepolia.catalyst, sepolia)
+        const servers = await getCatalystServersFromDAO(contract)
+        expect(servers).toHaveLength(3)
         const addresses = new Set(servers.map((s) => s.address))
         expect(addresses).toContain('https://peer-ap1.decentraland.zone')
         expect(addresses).toContain('https://peer.decentraland.zone')
