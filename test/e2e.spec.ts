@@ -9,7 +9,8 @@ import {
   CatalystContract,
   getCatalystServersFromDAO,
   CatalystByIdResult,
-  catalystAbi
+  catalystAbi,
+  getNameDenylistFromContract
 } from '../src'
 import { createFetchComponent } from '@well-known-components/fetch-component'
 
@@ -43,7 +44,7 @@ describe('e2e', () => {
       'mainnet',
       async () => {
         const contract = await createContract(l1Contracts.mainnet.nameDenylist, mainnet)
-        const denylist = await getPoisFromContract(contract)
+        const denylist = await getNameDenylistFromContract(contract)
         expect(denylist.length).toBeGreaterThan(1)
       },
       timeout
@@ -53,7 +54,7 @@ describe('e2e', () => {
       'goerli',
       async () => {
         const contract = await createContract(l1Contracts.goerli.nameDenylist, goerli)
-        const denylist = await getPoisFromContract(contract)
+        const denylist = await getNameDenylistFromContract(contract)
         expect(denylist).toHaveLength(0)
       },
       timeout
@@ -63,8 +64,9 @@ describe('e2e', () => {
       'sepolia',
       async () => {
         const contract = await createContract(l1Contracts.sepolia.nameDenylist, sepolia)
-        const denylist = await getPoisFromContract(contract)
-        expect(denylist).toHaveLength(0)
+        const denylist = await getNameDenylistFromContract(contract)
+        expect(denylist.length).toBeGreaterThanOrEqual(1)
+        expect(denylist).toContain('banned')
       },
       timeout
     )
