@@ -38,7 +38,6 @@ export async function getCatalystServersFromDAO(contract: any): Promise<Catalyst
       const unpackOutput = contract.catalystById.unpackOutput(data)
       return { owner: unpackOutput.owner, id: unpackOutput.id, domain: unpackOutput.address }
     })
-  console.log('catalystDomains', catalystDomains)
 
   return catalystDomains
     .filter((catalystDomain: CatalystByIdResult) => {
