@@ -2375,6 +2375,7 @@ export const catalystAbi = [
     type: 'event'
   }
 ]
+
 export const checkerAbi = [
   {
     inputs: [

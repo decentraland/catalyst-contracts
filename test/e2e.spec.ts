@@ -1,16 +1,12 @@
-import RequestManager, { ContractFactory, HTTPProvider, bytesToHex } from 'eth-connect'
+import RequestManager, { Contract, ContractFactory, HTTPProvider } from 'eth-connect'
 import {
-  listAbi,
+  catalystAbi,
+  getCatalystServersFromDAO,
+  getNameDenylistFromContract,
   getPoisFromContract,
   l1Contracts,
   l2Contracts,
-  PoiContract,
-  NameDenylistContract,
-  CatalystContract,
-  getCatalystServersFromDAO,
-  CatalystByIdResult,
-  catalystAbi,
-  getNameDenylistFromContract
+  listAbi
 } from '../src'
 import { createFetchComponent } from '@well-known-components/fetch-component'
 
@@ -34,7 +30,7 @@ describe('e2e', () => {
   })
 
   describe('names denylist', () => {
-    async function createContract(address: string, provider: HTTPProvider): Promise<NameDenylistContract> {
+    async function createContract(address: string, provider: HTTPProvider): Promise<Contract> {
       const requestManager = new RequestManager(provider)
       const factory = new ContractFactory(requestManager, listAbi)
       return (await factory.at(address)) as any
@@ -73,7 +69,7 @@ describe('e2e', () => {
   })
 
   describe('poi list', () => {
-    async function createContract(address: string, provider: HTTPProvider): Promise<PoiContract> {
+    async function createContract(address: string, provider: HTTPProvider): Promise<Contract> {
       const requestManager = new RequestManager(provider)
       const factory = new ContractFactory(requestManager, listAbi)
       return (await factory.at(address)) as any
@@ -101,22 +97,10 @@ describe('e2e', () => {
   })
 
   describe('server list', () => {
-    async function createContract(address: string, provider: HTTPProvider): Promise<CatalystContract> {
+    async function createContract(address: string, provider: HTTPProvider): Promise<Contract> {
       const requestManager = new RequestManager(provider)
       const factory = new ContractFactory(requestManager, catalystAbi)
-      const contract = (await factory.at(address)) as any
-      return {
-        async catalystCount(): Promise<number> {
-          return contract.catalystCount()
-        },
-        async catalystIds(i: number): Promise<string> {
-          return contract.catalystIds(i)
-        },
-        async catalystById(catalystId: string): Promise<CatalystByIdResult> {
-          const [id, owner, domain] = await contract.catalystById(catalystId)
-          return { id: '0x' + bytesToHex(id), owner, domain }
-        }
-      }
+      return (await factory.at(address)) as any
     }
 
     it(
