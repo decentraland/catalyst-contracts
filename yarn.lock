@@ -1939,9 +1939,9 @@ esutils@^2.0.2:
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
 eth-connect@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/eth-connect/-/eth-connect-6.1.0.tgz#94df7e019592825f0d2ee2429d19baf9fa3c5136"
-  integrity sha512-p5FN4GieTxwfJvgmGCPgXqL6w8/2cbLiTmNxpgQg881gSI0RdOShTHHu8amgxlj3VM4crovBx7UEKS2RGOhBLQ==
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/eth-connect/-/eth-connect-6.2.1.tgz#7aa818cd352f2977a8dfa63d3973100d0f986c4a"
+  integrity sha512-RRSOdcfOHHHTAhBVcLiLHiH945/yuwPkmlj59AfLm/ofCmVPRLEqqAONS0xcrLE70OnTHStl7GzHC7Vi3zzfQA==
 
 execa@^5.0.0:
   version "5.1.1"
