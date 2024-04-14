@@ -2,7 +2,7 @@ export * from './abis'
 export * from './utils'
 
 export type L1Network = 'goerli' | 'mainnet' | 'sepolia'
-export type L2Network = 'mumbai' | 'polygon'
+export type L2Network = 'mumbai' | 'polygon' | 'amoy'
 
 export const l1Contracts = {
   goerli: {
@@ -71,5 +71,13 @@ export const l2Contracts = {
     ],
     poi: '0xFEC09d5C192aaf7Ec7E2C89Cc8D3224138391B2E',
     manaToken: '0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4'
+  },
+  amoy: {
+    checker: '',
+    thirdParty: '',
+    factories: '0x802de0c509add2ee29de24de7225daaff4741c43',
+    commitees: '0x53c9c388000b6fc91b91fb466742d0e869785c3b',
+    poi: '0x7a0fad6854de8df1245da952cd3ae7f6893154c1',
+    manaToken: '0x7ad72b9f944ea9793cf4055d88f81138cc2c63a0'
   }
 }

@@ -18,19 +18,17 @@ const timeout = 100000
 
 describe('e2e', () => {
   let mainnet: HTTPProvider
-  let goerli: HTTPProvider
   let sepolia: HTTPProvider
   let polygon: HTTPProvider
-  let mumbai: HTTPProvider
+  let amoy: HTTPProvider
 
   beforeAll(async () => {
     const fetch = createFetchComponent()
     const opts = { fetch: fetch.fetch }
     mainnet = new HTTPProvider('https://rpc.decentraland.org/mainnet?project=catalyst-contracts-ci', opts)
-    goerli = new HTTPProvider('https://rpc.decentraland.org/goerli?project=catalyst-contracts-ci', opts)
     sepolia = new HTTPProvider('https://rpc.decentraland.org/sepolia?project=catalyst-contracts-ci', opts)
     polygon = new HTTPProvider('https://rpc.decentraland.org/polygon?project=catalyst-contracts-ci', opts)
-    mumbai = new HTTPProvider('https://rpc.decentraland.org/mumbai?project=catalyst-contracts-ci', opts)
+    amoy = new HTTPProvider('https://rpc.decentraland.org/amoy?project=catalyst-contracts-ci', opts)
   })
 
   describe('names denylist', () => {
@@ -46,16 +44,6 @@ describe('e2e', () => {
         const contract = await createContract(l1Contracts.mainnet.nameDenylist, mainnet)
         const denylist = await getNameDenylistFromContract(contract)
         expect(denylist.length).toBeGreaterThan(1)
-      },
-      timeout
-    )
-
-    it(
-      'goerli',
-      async () => {
-        const contract = await createContract(l1Contracts.goerli.nameDenylist, goerli)
-        const denylist = await getNameDenylistFromContract(contract)
-        expect(denylist).toHaveLength(0)
       },
       timeout
     )
@@ -90,11 +78,11 @@ describe('e2e', () => {
     )
 
     it(
-      'mumbai',
+      'amoy',
       async () => {
-        const contract = await createContract(l2Contracts.mumbai.poi, mumbai)
+        const contract = await createContract(l2Contracts.amoy.poi, amoy)
         const pois = await getPoisFromContract(contract)
-        expect(pois.length).toBeGreaterThan(1)
+        expect(pois.length).toBe(0) // 0 POIs in Amoy at the moment
       },
       timeout
     )
@@ -128,16 +116,6 @@ describe('e2e', () => {
         const addresses = new Set(servers.map((s) => s.address))
         expect(addresses).toContain('https://peer-ec1.decentraland.org')
         expect(addresses).toContain('https://peer-ec2.decentraland.org')
-      },
-      timeout
-    )
-
-    it(
-      'goerli',
-      async () => {
-        const contract = await createContract(l1Contracts.goerli.catalyst, goerli)
-        const servers = await getCatalystServersFromDAO(contract)
-        expect(servers).toHaveLength(0)
       },
       timeout
     )
