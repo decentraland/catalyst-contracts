@@ -75,8 +75,8 @@ export const l2Contracts = {
   amoy: {
     checker: '',
     thirdParty: '',
-    factories: '0x802de0c509add2ee29de24de7225daaff4741c43',
-    commitees: '0x53c9c388000b6fc91b91fb466742d0e869785c3b',
+    factories: [{ address: '0x802de0c509add2ee29de24de7225daaff4741c43', sinceBlock: 5763249 }],
+    commitees: [{ address: '0x53c9c388000b6fc91b91fb466742d0e869785c3b', sinceBlock: 5706678 }],
     poi: '0x7a0fad6854de8df1245da952cd3ae7f6893154c1',
     manaToken: '0x7ad72b9f944ea9793cf4055d88f81138cc2c63a0'
   }
