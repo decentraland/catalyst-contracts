@@ -73,7 +73,7 @@ export const l2Contracts = {
     manaToken: '0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4'
   },
   amoy: {
-    checker: '',
+    checker: '0x0ffc7e6d72ee2f287b877533454210621b1b7822',
     thirdParty: '',
     factories: [{ address: '0x802de0c509add2ee29de24de7225daaff4741c43', sinceBlock: 5763249 }],
     commitees: [{ address: '0x53c9c388000b6fc91b91fb466742d0e869785c3b', sinceBlock: 5706678 }],
