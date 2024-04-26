@@ -74,7 +74,7 @@ export const l2Contracts = {
   },
   amoy: {
     checker: '0x0ffc7e6d72ee2f287b877533454210621b1b7822', // This contract address is just a placeholder, it's not required to deploy a contract to the testnet
-    thirdParty: '',
+    thirdParty: '0x41e07f9d48586df0ac59a09a940ffdf4af306a13',
     factories: [{ address: '0x802de0c509add2ee29de24de7225daaff4741c43', sinceBlock: 5763249 }],
     commitees: [{ address: '0x53c9c388000b6fc91b91fb466742d0e869785c3b', sinceBlock: 5706678 }],
     poi: '0x7a0fad6854de8df1245da952cd3ae7f6893154c1',
