@@ -30,7 +30,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@dcl/eslint-config": "^1.0.4",
+    "@dcl/eslint-config": "^2.0.0",
     "@types/node": "16.7.10",
     "@well-known-components/fetch-component": "^2.0.0",
     "@well-known-components/test-helpers": "^1.5.0",
