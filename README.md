@@ -1,5 +1,7 @@
 # Catalyst Contracts
 
+[![Coverage Status](https://coveralls.io/repos/github/decentraland/catalyst-contracts/badge.svg?branch=main)](https://coveralls.io/github/decentraland/catalyst-contracts?branch=main)
+
 `@dcl/urn-resolver` is a library designed to resolve Decentraland URNs based on the `urn:decentraland` namespace. It helps identify and manage various assets like wearables, LAND, collections, and third-party items across networks following the standards defined in the URN Namespaces.
 
 ## Installation 
