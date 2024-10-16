@@ -1,6 +1,10 @@
 # Catalyst Contracts
 
-A set of utilities for Catalyst nodes, related to interacting with the DAO
+`@dcl/urn-resolver` is a library designed to resolve Decentraland URNs based on the `urn:decentraland` namespace. It helps identify and manage various assets like wearables, LAND, collections, and third-party items across networks following the standards defined in the URN Namespaces.
+
+## Installation 
+
+`npm install @dcl/urn-resolver` 
 
 ## Contributing
 
